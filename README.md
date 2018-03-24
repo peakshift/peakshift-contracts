@@ -13,6 +13,6 @@ Ensure you have the following tools installed:
 
 #### Usage
 
-1. `solium —watch -d .`
+1. `solium --watch -d .`
 2. Edit contract file, solium will watch for changes up save and alert you of problems right in terminal.
 
