@@ -37,11 +37,5 @@ Ensure you have the following tools installed:
 
 ### Writing Contracts
 
-<<<<<<< Updated upstream
 1. `solium --watch -d .`
 2. Edit contract file, solium will watch for changes up save and alert you of problems right in terminal.
-
-=======
-1. `solium —watch -d .`
-2. Edit contract file, solium will watch for changes up save and alert you of problems right in terminal.
->>>>>>> Stashed changes
