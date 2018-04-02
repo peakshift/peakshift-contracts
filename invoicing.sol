@@ -1,18 +1,19 @@
-/** @title Invoicing Contract */
-
 pragma solidity ^0.4.21;
 pragma experimental "v0.5.0";
 
 
+/** @title Invoicing Contract */
 contract Invoicing {
 
     address public owner;
+    int public disputePeriod;
 
     /**
      * Constructor function runs once upon contract creation
      */
     function Invoicing() public {
         owner = msg.sender;
+        disputePeriod = 5;
     }
 
     /**
@@ -22,7 +23,15 @@ contract Invoicing {
         uint total;
         uint balance;
         bool status;
-        mapping (uint256 => Payment) payments;
+        mapping (bytes32 => Payment) payments;
+    }
+
+    /**
+     * Data Type: Dispute
+     */
+    struct Dispute {
+        bytes32 invoice;
+        bytes32 claim;
     }
 
     /**
@@ -36,12 +45,12 @@ contract Invoicing {
     /**
      * Data Type: Invoices Array
      */
-    mapping (uint256 => Invoice) public invoices;
+    mapping (bytes32 => Invoice) public invoices;
 
     /**
      * Events
      */
-    event PaymentComplete(uint256 _invoiceHash);
+    event PaymentComplete(bytes32 _invoiceHash);
 
     /**
      * Check if owner sent the transaction otherwise reject it
@@ -59,7 +68,7 @@ contract Invoicing {
      * @param _invoiceHash {uint256} - Content hash of the off-chain invoice
      * @param _total {uint} - Total amount owed
      */
-    function create(uint256 _invoiceHash, uint _total) public returns (bool) {
+    function create(bytes32 _invoiceHash, uint _total) public returns (bool) {
         invoices[_invoiceHash].total = _total;
         invoices[_invoiceHash].status = false;
         invoices[_invoiceHash].balance = 0;
@@ -74,7 +83,7 @@ contract Invoicing {
      * @param _paymentHash {uint256} - Content hash of the off-chain payment
      * @return {bool} - True indicates operation was successful
      */
-    function pay(uint256 _invoiceHash, uint256 _paymentHash) public payable returns (bool) {
+    function pay(bytes32 _invoiceHash, bytes32 _paymentHash) public payable returns (bool) {
         invoices[_invoiceHash].payments[_paymentHash].sender = msg.sender;
         invoices[_invoiceHash].payments[_paymentHash].amount = msg.value;
         invoices[_invoiceHash].balance += msg.value;
@@ -91,7 +100,7 @@ contract Invoicing {
      * @param _invoiceHash {uint256} - Content hash of the off-chain invoice
      * @param _claim {uint256} - Content hash of the off-chain claim
      */
-    function dispute(uint256 _invoiceHash, uint256 _claim) public {
+    function dispute(bytes32 _invoiceHash, bytes32 _claim) public {
 
     }
 
@@ -102,7 +111,7 @@ contract Invoicing {
      * @notice Will be an attractive attack vector 
      * @param _invoiceHash {uint256} - Content hash of the off-chain invoice
      */
-    function refund(uint256 _invoiceHash) private onlyOwner {
+    function refund(bytes32 _invoiceHash) private onlyOwner {
 
     }
 }
