@@ -38,7 +38,7 @@ While we have always strived to operate in a transparent, and fair manner as our
 - Write Tests
 - Review Tests
 - Review Pull Request
-- Write Standards Proposal
+- Write Improvement Proposal
 
 ### Actions
 - Request Work
