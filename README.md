@@ -12,7 +12,7 @@ While we have always strived to operate in a transparent, and fair manner as our
 
 #### Mission / Ideals
 
-- Replication is waste, collaborte or bring something new into the world.
+- Replication is waste, collaborate or bring something new into the world.
 - Technology can be used for good, but it can be a weapon.
 - Be excelent.
 
