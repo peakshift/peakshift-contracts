@@ -25,6 +25,8 @@ While we have always strived to operate in a transparent, and fair manner as our
 
 #### Proof of Work
 
+- Verifiable proofs that work has been taken place in the event of a dispute.
+
 ## Structure [DRAFT]
 
 ### Participants
