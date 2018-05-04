@@ -1,4 +1,4 @@
-pragma solidity ^0.4.21;
+pragma solidity ^0.4.23;
 pragma experimental "v0.5.0";
 
 
@@ -11,7 +11,7 @@ contract Invoicing {
     /**
      * Constructor function runs once upon contract creation
      */
-    function Invoicing() public {
+    constructor() public {
         owner = msg.sender;
         disputePeriod = 5;
     }
@@ -101,7 +101,7 @@ contract Invoicing {
      * @param _claim {uint256} - Content hash of the off-chain claim
      */
     function dispute(bytes32 _invoiceHash, bytes32 _claim) public {
-
+        revert();
     }
 
     /**
@@ -112,6 +112,6 @@ contract Invoicing {
      * @param _invoiceHash {uint256} - Content hash of the off-chain invoice
      */
     function refund(bytes32 _invoiceHash) private onlyOwner {
-
+        revert();
     }
 }
