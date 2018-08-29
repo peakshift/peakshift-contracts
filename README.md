@@ -30,7 +30,7 @@ While we have always strived to operate in a transparent, and fair manner as our
 ## Structure [DRAFT]
 
 ### Participants
-- Client
+- Project Owner
 - Worker
 - Reviewer
 
@@ -64,7 +64,7 @@ While we have always strived to operate in a transparent, and fair manner as our
 - Estimates
   - Worker `candidate`
   - Reviewers `token holders`
-  - Client `comsumer`
+  - Project Owner `comsumer`
 - Proposals
   - Worker `candidate`
   - Reviewers `token holders`
