@@ -1,21 +1,43 @@
-For the Peak Shift DAO
+# Incentives and disincentives
 
-Example:
+### Background
 
-- a task is estimated to be 10 hrs
-- you are being paid $10 an hour
-- you deposit a sum of $100 to start said task
+```gherkin
+Given a task is estimated to be "10hrs"
+And the worker is being paid "$10" each hour of work
+And the worker deposits a sum of "$100" to claim the task
+```
 
+### Scenarios
 
+```gherkin
+When the work is approved
+And worker logged < "10hrs" on the task
+Then the worker will receive a payout totalling of "$200"
+```
+	-  this can be seen as an incentive for persons to finish tasks quickly
 
-Outline
+```gherkin
+Given the worker goes "2hrs 12m" over the estimate
+When the work is approved
+Then "$22" is deducated from your stake
+And the worker will receive a payout totalling "$178"
 
-- If you complete the task within less than 10hrs, a bonus is given
+Given the worker goes 1hrs over the estimate
+When the work is approved
+Then "$10" is deducated from the worker's stake
+And the worker will receive a payout totalling "$190"
 
-		-  this can be seen as an incentive for persons to finish tasks quickly
+# note* randomised test needed
+```
+	-  you will get back the money you initially deposited
 
-- If, for eg, you go 2hrs over the estimate then \$20  is taken away and you only end up with $180
+```gherkin
+Scenario: Reassign task if incomplete and worker is >= "50%" over the estimate
+When the worker goes "5hrs" over the estimate
+And the work is not approved
+Then the  is deducated from your stake
+And the worker will receive a payout totalling "$180"
+```
 
-		-  you will get back the money you initially deposited
-
-- However, if you are over the estimate by more than half of the estimated time, it would be best to reassign the task to someone else before you're further penalized and lose all of your deposit
+	- However, if you are over the estimate by more than half of the estimated time, it would be best to reassign the task to someone else before you're further penalized and lose all of your deposit
